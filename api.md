@@ -1,4 +1,4 @@
-# Under Gate Multi Section TypeScript API
+# Under Gate Multi Section QA TypeScript API
 
 Complete reference of every operation, grouped by resource. See [the README](./README.md) for usage and configuration.
 
@@ -815,9 +815,9 @@ Complete reference of every operation, grouped by resource. See [the README](./R
 ## Setup
 
 ```ts
-import UnderGateMultiSection from '@qa-switch-test/under-gate-multi-section';
+import UnderGateMultiSectionQa from '@qa-switch-test/under-gate-multi-section';
 
-const client = new UnderGateMultiSection();
+const client = new UnderGateMultiSectionQa();
 ```
 
 ## `Accounts`

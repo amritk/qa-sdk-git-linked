@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import { APIConnectionTimeoutError, UnderGateMultiSectionError } from '../../core/error';
+import { APIConnectionTimeoutError, UnderGateMultiSectionQaError } from '../../core/error';
 import { isAbortError } from '../errors';
 import { concatBytes, decodeUTF8, encodeUTF8 } from './bytes';
 
@@ -24,8 +24,10 @@ const formatLimit = (bytes: number): string => {
 };
 
 /** The error a decoder or body read throws when the server sends more than `limit` bytes for one value. */
-export const sizeLimitError = (what: string, limit: number): UnderGateMultiSectionError =>
-  new UnderGateMultiSectionError(`The ${what} is larger than the ${formatLimit(limit)} the SDK will buffer.`);
+export const sizeLimitError = (what: string, limit: number): UnderGateMultiSectionQaError =>
+  new UnderGateMultiSectionQaError(
+    `The ${what} is larger than the ${formatLimit(limit)} the SDK will buffer.`,
+  );
 
 /** The part of a body stream reader {@link readBodyText} uses, typed without the DOM lib. */
 type BodyReader = {
