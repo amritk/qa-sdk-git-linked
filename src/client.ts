@@ -1392,7 +1392,7 @@ export interface ClientOptions {
 export type UnderGateMultiSectionQaOptions = ClientOptions;
 
 /**
- * API Client for interfacing with the UnderGateMultiSectionQa API.
+ * API Client for interfacing with the UnderGateMultiSectionQa API (hand-edited on scalar-next for QA).
  */
 export class UnderGateMultiSectionQa {
   baseURL: string;
