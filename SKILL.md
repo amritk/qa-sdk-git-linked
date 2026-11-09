@@ -1,11 +1,11 @@
 ---
-name: under-gate-multi-section-qa-typescript-sdk
-description: "TypeScript SDK for Under Gate Multi Section QA API. Use when writing TypeScript code that calls Under Gate Multi Section QA API with the @qa-switch-test/under-gate-multi-section package: installing it, constructing and authenticating the client, and calling API operations."
+name: under-gate-multi-section-typescript-sdk
+description: "TypeScript SDK for Under Gate Multi Section API. Use when writing TypeScript code that calls Under Gate Multi Section API with the @qa-switch-test/under-gate-multi-section package: installing it, constructing and authenticating the client, and calling API operations."
 ---
 
-# Under Gate Multi Section QA TypeScript SDK
+# Under Gate Multi Section TypeScript SDK
 
-Generated TypeScript client for Under Gate Multi Section QA API, published as `@qa-switch-test/under-gate-multi-section`. Use the generated client instead of hand-writing HTTP requests.
+Generated TypeScript client for Under Gate Multi Section API, published as `@qa-switch-test/under-gate-multi-section`. Use the generated client instead of hand-writing HTTP requests.
 
 ## Install
 
@@ -16,17 +16,17 @@ npm install @qa-switch-test/under-gate-multi-section
 ## Client setup and authentication
 
 ```ts
-import UnderGateMultiSectionQa from '@qa-switch-test/under-gate-multi-section';
+import UnderGateMultiSection from '@qa-switch-test/under-gate-multi-section';
 
-const client = new UnderGateMultiSectionQa();
+const client = new UnderGateMultiSection();
 ```
 
 ## Calling operations
 
 ```ts
-import UnderGateMultiSectionQa from '@qa-switch-test/under-gate-multi-section';
+import UnderGateMultiSection from '@qa-switch-test/under-gate-multi-section';
 
-const client = new UnderGateMultiSectionQa();
+const client = new UnderGateMultiSection();
 
 const response = await client.accounts.list({
   page: 1,

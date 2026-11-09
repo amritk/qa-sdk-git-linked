@@ -1,6 +1,6 @@
 {
-  "name": "UnderGateMultiSectionQa",
-  "slug": "underGateMultiSectionQa",
+  "name": "UnderGateMultiSection",
+  "slug": "underGateMultiSection",
   "generatorVersion": "0.39.0",
   "servers": [
     "https://api.cloudflare.com/client/v4"

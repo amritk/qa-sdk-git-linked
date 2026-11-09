@@ -2,9 +2,9 @@
 
 import { path as __scalarPath } from '../../internal/utils/path';
 import * as BrapiAPI from './brapi';
-import { UnderGateMultiSectionQa } from '../../client';
+import { UnderGateMultiSection } from '../../client';
 import { EventEmitter, type EventParameters } from '../../core/EventEmitter';
-import { UnderGateMultiSectionQaError } from '../../error';
+import { UnderGateMultiSectionError } from '../../error';
 import type { RawWebSocketData, ReconnectingEvent, UnsentMessage } from '../../internal/ws';
 import type { BrapiRetrieveDevtoolsPageWSParameters } from './retrieveDevtoolsPage-ws-base';
 
@@ -20,7 +20,7 @@ export type BrapiRetrieveDevtoolsPageStreamMessage =
   | { type: 'raw'; data: RawWebSocketData }
   | { type: 'error'; error: WebSocketError };
 
-export class WebSocketError extends UnderGateMultiSectionQaError {
+export class WebSocketError extends UnderGateMultiSectionError {
   error?: BrapiRetrieveDevtoolsPageWSErrorEvent | undefined;
 
   constructor(message: string, event: BrapiRetrieveDevtoolsPageWSErrorEvent | null) {
@@ -91,7 +91,7 @@ export abstract class BrapiRetrieveDevtoolsPageEmitter extends EventEmitter<WebS
   }
 }
 
-export function buildURL(client: UnderGateMultiSectionQa, parameters: Record<string, unknown>): URL {
+export function buildURL(client: UnderGateMultiSection, parameters: Record<string, unknown>): URL {
   const {
     account_id,
     session_id,

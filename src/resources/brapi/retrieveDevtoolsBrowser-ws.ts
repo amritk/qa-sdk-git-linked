@@ -7,7 +7,7 @@ import {
   type BrapiRetrieveDevtoolsBrowserWSBaseOptions,
   type BrapiRetrieveDevtoolsBrowserWSParameters,
 } from './retrieveDevtoolsBrowser-ws-base';
-import { UnderGateMultiSectionQa } from '../../client';
+import { UnderGateMultiSection } from '../../client';
 
 export type {
   BrapiRetrieveDevtoolsBrowserWSParameters,
@@ -22,7 +22,7 @@ export class BrapiRetrieveDevtoolsBrowserWS extends BrapiRetrieveDevtoolsBrowser
   private _wsOptions: ClientOptions | null | undefined;
 
   constructor(
-    client: UnderGateMultiSectionQa,
+    client: UnderGateMultiSection,
     parameters: BrapiRetrieveDevtoolsBrowserWSParameters,
     options?: BrapiRetrieveDevtoolsBrowserWSClientOptions | null | undefined,
   ) {

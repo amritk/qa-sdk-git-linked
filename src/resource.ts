@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import type { UnderGateMultiSectionQa } from './client';
+import type { UnderGateMultiSection } from './client';
 
 export abstract class APIResource {
-  protected _client: UnderGateMultiSectionQa;
+  protected _client: UnderGateMultiSection;
 
-  constructor(client: UnderGateMultiSectionQa) {
+  constructor(client: UnderGateMultiSection) {
     this._client = client;
   }
 }
