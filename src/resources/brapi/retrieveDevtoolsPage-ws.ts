@@ -7,7 +7,7 @@ import {
   type BrapiRetrieveDevtoolsPageWSBaseOptions,
   type BrapiRetrieveDevtoolsPageWSParameters,
 } from './retrieveDevtoolsPage-ws-base';
-import { UnderGateMultiSection } from '../../client';
+import { UnderGateMultiSectionQa } from '../../client';
 
 export type {
   BrapiRetrieveDevtoolsPageWSParameters,
@@ -22,7 +22,7 @@ export class BrapiRetrieveDevtoolsPageWS extends BrapiRetrieveDevtoolsPageWSBase
   private _wsOptions: ClientOptions | null | undefined;
 
   constructor(
-    client: UnderGateMultiSection,
+    client: UnderGateMultiSectionQa,
     parameters: BrapiRetrieveDevtoolsPageWSParameters,
     options?: BrapiRetrieveDevtoolsPageWSClientOptions | null | undefined,
   ) {
