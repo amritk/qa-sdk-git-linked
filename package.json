@@ -1,6 +1,6 @@
 {
   "name": "@qa-switch-test/under-gate-multi-section",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Boundary probe: many real sections, just under the gate.",
   "author": "Under Gate Multi Section QA",
   "repository": {
