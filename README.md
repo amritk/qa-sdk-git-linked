@@ -1,6 +1,6 @@
-# Under Gate Multi Section
+# Under Gate Multi Section QA
 
-This library provides convenient access to the Under Gate Multi Section REST API from TypeScript or JavaScript.
+This library provides convenient access to the Under Gate Multi Section QA REST API from TypeScript or JavaScript.
 
 The full API of this library can be found in [api.md](./api.md).
 
@@ -34,9 +34,9 @@ npm install @qa-switch-test/under-gate-multi-section
 ## Usage
 
 ```ts
-import UnderGateMultiSection from '@qa-switch-test/under-gate-multi-section';
+import UnderGateMultiSectionQa from '@qa-switch-test/under-gate-multi-section';
 
-const client = new UnderGateMultiSection();
+const client = new UnderGateMultiSectionQa();
 
 const response = await client.accounts.list({
   page: 1,
@@ -109,9 +109,9 @@ Documented error statuses: `400`, `401`, `402`, `403`, `404`, `409`, `413`, `422
 Configure the generated client by setting any of these options when you create it.
 
 ```ts
-import UnderGateMultiSection from '@qa-switch-test/under-gate-multi-section';
+import UnderGateMultiSectionQa from '@qa-switch-test/under-gate-multi-section';
 
-const client = new UnderGateMultiSection({
+const client = new UnderGateMultiSectionQa({
   timeout: 60000,
   maxRetries: 2,
   logLevel: 'debug',

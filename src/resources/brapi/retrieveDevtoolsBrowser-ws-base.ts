@@ -20,8 +20,8 @@ import {
   type UnsentMessage,
 } from '../../internal/ws';
 import * as BrapiAPI from './brapi';
-import { UnderGateMultiSection } from '../../client';
-import { UnderGateMultiSectionError } from '../../error';
+import { UnderGateMultiSectionQa } from '../../client';
+import { UnderGateMultiSectionQaError } from '../../error';
 
 export interface BrapiRetrieveDevtoolsBrowserWSParameters extends Record<string, unknown> {
   account_id: string;
@@ -63,7 +63,7 @@ export abstract class BrapiRetrieveDevtoolsBrowserWSBase<
   url!: URL;
   socket!: TSocket;
 
-  protected _client: UnderGateMultiSection;
+  protected _client: UnderGateMultiSectionQa;
   protected _parameters: BrapiRetrieveDevtoolsBrowserWSParameters | null | undefined;
   private _reconnectOptions: BrapiRetrieveDevtoolsBrowserWSReconnectOptions | null;
   private _sendQueue: SendQueue<unknown>;
@@ -85,7 +85,7 @@ export abstract class BrapiRetrieveDevtoolsBrowserWSBase<
   }>();
 
   constructor(
-    client: UnderGateMultiSection,
+    client: UnderGateMultiSectionQa,
     parameters: BrapiRetrieveDevtoolsBrowserWSParameters,
     options?: BrapiRetrieveDevtoolsBrowserWSBaseOptions | undefined,
   ) {

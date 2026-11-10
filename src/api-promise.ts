@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Scalar. See README.md for details.
 
-import type { UnderGateMultiSection } from './client';
+import type { UnderGateMultiSectionQa } from './client';
 import type { FinalRequestOptions } from './internal/request-options';
 import {
   MAX_RESPONSE_BODY_BYTES,
@@ -18,7 +18,7 @@ export type APIResponseProps = {
   readonly startTime?: number | undefined;
 };
 
-export type ParseResponse<T> = (client: UnderGateMultiSection, props: APIResponseProps) => T | Promise<T>;
+export type ParseResponse<T> = (client: UnderGateMultiSectionQa, props: APIResponseProps) => T | Promise<T>;
 
 // The read runs under the request deadline, which `makeRequest` left armed for it and which is
 // disarmed here once the body is in, however the read ends.
@@ -40,7 +40,7 @@ export class APIPromise<T> extends Promise<T> {
   private parsedPromise: Promise<T> | undefined;
 
   constructor(
-    private readonly client: UnderGateMultiSection,
+    private readonly client: UnderGateMultiSectionQa,
     private readonly responsePromise: Promise<APIResponseProps>,
     private readonly parseResponse: ParseResponse<T> = defaultParseResponse,
   ) {

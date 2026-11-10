@@ -1389,12 +1389,12 @@ export interface ClientOptions {
   logger?: Logger | undefined;
 }
 
-export type UnderGateMultiSectionOptions = ClientOptions;
+export type UnderGateMultiSectionQaOptions = ClientOptions;
 
 /**
- * API Client for interfacing with the UnderGateMultiSection API.
+ * API Client for interfacing with the UnderGateMultiSectionQa API (hand-edited on scalar-next for QA).
  */
-export class UnderGateMultiSection {
+export class UnderGateMultiSectionQa {
   baseURL: string;
   maxRetries: number;
   timeout: number;
@@ -1413,7 +1413,7 @@ export class UnderGateMultiSection {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the UnderGateMultiSection API.
+   * API Client for interfacing with the UnderGateMultiSectionQa API.
    *
    * @param {string} [opts.baseURL=process.env["QA_SWITCH_TEST_BASE_URL"] ?? https://api.cloudflare.com/client/v4] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -1431,7 +1431,7 @@ export class UnderGateMultiSection {
     const baseURLOverridden = baseURL !== null && baseURL !== undefined && baseURL !== '';
     const defaultBaseURL = 'https://api.cloudflare.com/client/v4';
     this.baseURL = options.baseURL || defaultBaseURL;
-    this.timeout = options.timeout ?? UnderGateMultiSection.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? UnderGateMultiSectionQa.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
@@ -1510,7 +1510,7 @@ export class UnderGateMultiSection {
   }
 
   private getUserAgent(): string {
-    return `UnderGateMultiSection/JS ${VERSION}`;
+    return `UnderGateMultiSectionQa/JS ${VERSION}`;
   }
 
   protected defaultIdempotencyKey(): string {
@@ -1656,7 +1656,7 @@ export class UnderGateMultiSection {
       controller,
     );
     // A subclass's own `fetchWithTimeout` sends the request; the deadline above still covers the body.
-    const viaOverride = this.fetchWithTimeout !== UnderGateMultiSection.prototype.fetchWithTimeout;
+    const viaOverride = this.fetchWithTimeout !== UnderGateMultiSectionQa.prototype.fetchWithTimeout;
     const response = await (viaOverride
       ? Promise.resolve().then(() => this.fetchWithTimeout(url, req, timeout, controller))
       : this.#fetchFollowingRedirects(url, req, controller)
@@ -2252,7 +2252,7 @@ export class UnderGateMultiSection {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? await value() : value;
     if (!token)
-      throw new Errors.UnderGateMultiSectionError(
+      throw new Errors.UnderGateMultiSectionQaError(
         `Expected '${optionName}' to resolve to a non-empty string.`,
       );
     return token;
@@ -2265,16 +2265,16 @@ export class UnderGateMultiSection {
     if (value == null) return undefined;
     const token = typeof value === 'function' ? value() : value;
     if (typeof token !== 'string' || !token)
-      throw new Errors.UnderGateMultiSectionError(
+      throw new Errors.UnderGateMultiSectionQaError(
         `Expected '${optionName}' to resolve to a non-empty string.`,
       );
     return token;
   }
 
-  static UnderGateMultiSection = this;
+  static UnderGateMultiSectionQa = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static UnderGateMultiSectionError = Errors.UnderGateMultiSectionError;
+  static UnderGateMultiSectionQaError = Errors.UnderGateMultiSectionQaError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -2431,132 +2431,132 @@ export class UnderGateMultiSection {
   approvals: Approvals = new Approvals(this);
 }
 
-UnderGateMultiSection.Accounts = Accounts;
-UnderGateMultiSection.Images = Images;
-UnderGateMultiSection.CustomPagesForAnAccount = CustomPagesForAnAccount;
-UnderGateMultiSection.CustomAssetsForAnAccount = CustomAssetsForAnAccount;
-UnderGateMultiSection.TsengAbuseComplaintProcessorOther = TsengAbuseComplaintProcessorOther;
-UnderGateMultiSection.McpPortalAnalytics = McpPortalAnalytics;
-UnderGateMultiSection.McpPortal = McpPortal;
-UnderGateMultiSection.McpPortalServers = McpPortalServers;
-UnderGateMultiSection.AccessApplications = AccessApplications;
-UnderGateMultiSection.AccessShortLivedCertificateCas = AccessShortLivedCertificateCas;
-UnderGateMultiSection.AccessApplicationScopedPolicies = AccessApplicationScopedPolicies;
-UnderGateMultiSection.AccessAuthenticatorDeviceAaguids = AccessAuthenticatorDeviceAaguids;
-UnderGateMultiSection.AccessBookmarkApplicationsDeprecated = AccessBookmarkApplicationsDeprecated;
-UnderGateMultiSection.AccessMTLSAuthentication = AccessMTLSAuthentication;
-UnderGateMultiSection.AccessCustomPages = AccessCustomPages;
-UnderGateMultiSection.GatewayCa = GatewayCa;
-UnderGateMultiSection.AccessGroups = AccessGroups;
-UnderGateMultiSection.AccessIdentityProviders = AccessIdentityProviders;
-UnderGateMultiSection.AccessIdPFederationGrants = AccessIdPFederationGrants;
-UnderGateMultiSection.AccessKeyConfiguration = AccessKeyConfiguration;
-UnderGateMultiSection.AccessAuthenticationLogs = AccessAuthenticationLogs;
-UnderGateMultiSection.AccessJitRequestLogs = AccessJitRequestLogs;
-UnderGateMultiSection.AccessScimUpdateLogs = AccessScimUpdateLogs;
-UnderGateMultiSection.ZeroTrustOrganization = ZeroTrustOrganization;
-UnderGateMultiSection.AccessReusablePolicies = AccessReusablePolicies;
-UnderGateMultiSection.AccessPolicyTester = AccessPolicyTester;
-UnderGateMultiSection.AccessSamlEncryptionCertificates = AccessSamlEncryptionCertificates;
-UnderGateMultiSection.ZeroTrustSeats = ZeroTrustSeats;
-UnderGateMultiSection.AccessServiceTokens = AccessServiceTokens;
-UnderGateMultiSection.AccessTags = AccessTags;
-UnderGateMultiSection.ZeroTrustUsers = ZeroTrustUsers;
-UnderGateMultiSection.IPAddressManagementAddressMaps = IPAddressManagementAddressMaps;
-UnderGateMultiSection.IPAddressManagementLeases = IPAddressManagementLeases;
-UnderGateMultiSection.IPAddressManagementPrefixes = IPAddressManagementPrefixes;
-UnderGateMultiSection.IPAddressManagementBGPPrefixes = IPAddressManagementBGPPrefixes;
-UnderGateMultiSection.IPAddressManagementDynamicAdvertisement = IPAddressManagementDynamicAdvertisement;
-UnderGateMultiSection.IPAddressManagementServiceBindings = IPAddressManagementServiceBindings;
-UnderGateMultiSection.IPAddressManagementPrefixDelegation = IPAddressManagementPrefixDelegation;
-UnderGateMultiSection.DlsRegionalServices = DlsRegionalServices;
-UnderGateMultiSection.Namespaces = Namespaces;
-UnderGateMultiSection.Memory = Memory;
-UnderGateMultiSection.AIGateway = AIGateway;
-UnderGateMultiSection.AIGatewayAccountProviders = AIGatewayAccountProviders;
-UnderGateMultiSection.AIGatewayAccountProviderCosts = AIGatewayAccountProviderCosts;
-UnderGateMultiSection.AIGatewayEvaluations = AIGatewayEvaluations;
-UnderGateMultiSection.AIGatewayGateways = AIGatewayGateways;
-UnderGateMultiSection.AIGatewayCustomDomains = AIGatewayCustomDomains;
-UnderGateMultiSection.AIGatewayDatasets = AIGatewayDatasets;
-UnderGateMultiSection.AIGatewayLogs = AIGatewayLogs;
-UnderGateMultiSection.AIGatewayProviderConfigs = AIGatewayProviderConfigs;
-UnderGateMultiSection.AIGatewayDynamicRoutes = AIGatewayDynamicRoutes;
-UnderGateMultiSection.Account = Account;
-UnderGateMultiSection.AISearchInstances = AISearchInstances;
-UnderGateMultiSection.AISearchInstancesJobs = AISearchInstancesJobs;
-UnderGateMultiSection.AISearchNamespaces = AISearchNamespaces;
-UnderGateMultiSection.AISearchAccountSearch = AISearchAccountSearch;
-UnderGateMultiSection.AISearchInstancesItems = AISearchInstancesItems;
-UnderGateMultiSection.AISearchTokens = AISearchTokens;
-UnderGateMultiSection.WorkersAI = WorkersAI;
-UnderGateMultiSection.WorkersAIFinetune = WorkersAIFinetune;
-UnderGateMultiSection.FinetuneAsset = FinetuneAsset;
-UnderGateMultiSection.NotificationAlertTypes = NotificationAlertTypes;
-UnderGateMultiSection.NotificationMechanismEligibility = NotificationMechanismEligibility;
-UnderGateMultiSection.NotificationDestinationsWithPagerDuty = NotificationDestinationsWithPagerDuty;
-UnderGateMultiSection.NotificationWebhooks = NotificationWebhooks;
-UnderGateMultiSection.NotificationHistory = NotificationHistory;
-UnderGateMultiSection.NotificationPolicies = NotificationPolicies;
-UnderGateMultiSection.NotificationSilences = NotificationSilences;
-UnderGateMultiSection.DataSecurity = DataSecurity;
-UnderGateMultiSection.ArtAnalytics = ArtAnalytics;
-UnderGateMultiSection.AnalyticsEngine = AnalyticsEngine;
-UnderGateMultiSection.Artifacts = Artifacts;
-UnderGateMultiSection.AuditLogs = AuditLogs;
-UnderGateMultiSection.AutoRagRagSearch = AutoRagRagSearch;
-UnderGateMultiSection.AutoRagRag = AutoRagRag;
-UnderGateMultiSection.AutoRagJobs = AutoRagJobs;
-UnderGateMultiSection.BillableUsage = BillableUsage;
-UnderGateMultiSection.BillableUsageV2 = BillableUsageV2;
-UnderGateMultiSection.AccountBilling = AccountBilling;
-UnderGateMultiSection.AccountBillingHistory = AccountBillingHistory;
-UnderGateMultiSection.AccountBillingProfile = AccountBillingProfile;
-UnderGateMultiSection.UsageAnalytics = UsageAnalytics;
-UnderGateMultiSection.BotnetThreatFeed = BotnetThreatFeed;
-UnderGateMultiSection.BrandProtection = BrandProtection;
-UnderGateMultiSection.LogoMatch = LogoMatch;
-UnderGateMultiSection.DomainSearch = DomainSearch;
-UnderGateMultiSection.BrowserExtensionConfig = BrowserExtensionConfig;
-UnderGateMultiSection.BrowserExtensionInventories = BrowserExtensionInventories;
-UnderGateMultiSection.Brapi = Brapi;
-UnderGateMultiSection.Builds = Builds;
-UnderGateMultiSection.RepositoryConnections = RepositoryConnections;
-UnderGateMultiSection.GitHubIntegration = GitHubIntegration;
-UnderGateMultiSection.BuildTokens = BuildTokens;
-UnderGateMultiSection.Triggers = Triggers;
-UnderGateMultiSection.EnvironmentVariables = EnvironmentVariables;
-UnderGateMultiSection.Workers = Workers;
-UnderGateMultiSection.DeployHooks = DeployHooks;
-UnderGateMultiSection.AccountSubscriptions = AccountSubscriptions;
-UnderGateMultiSection.CallsApps = CallsApps;
-UnderGateMultiSection.CallsTurnKeys = CallsTurnKeys;
-UnderGateMultiSection.CloudflareTunnel = CloudflareTunnel;
-UnderGateMultiSection.CloudflareTunnelConfiguration = CloudflareTunnelConfiguration;
-UnderGateMultiSection.Turnstile = Turnstile;
-UnderGateMultiSection.Scans = Scans;
-UnderGateMultiSection.BinDB = BinDB;
-UnderGateMultiSection.Event = Event;
-UnderGateMultiSection.Attacker = Attacker;
-UnderGateMultiSection.Category = Category;
-UnderGateMultiSection.Country = Country;
-UnderGateMultiSection.Dataset = Dataset;
-UnderGateMultiSection.Groups = Groups;
-UnderGateMultiSection.Indicators = Indicators;
-UnderGateMultiSection.Indicator = Indicator;
-UnderGateMultiSection.Permissions = Permissions;
-UnderGateMultiSection.Tag = Tag;
-UnderGateMultiSection.TargetIndustry = TargetIndustry;
-UnderGateMultiSection.Datasets = Datasets;
-UnderGateMultiSection.Events = Events;
-UnderGateMultiSection.IndicatorTypes = IndicatorTypes;
-UnderGateMultiSection.TagCategory = TagCategory;
-UnderGateMultiSection.RequestForInformationRfi = RequestForInformationRfi;
-UnderGateMultiSection.PriorityIntelligenceRequirementsPir = PriorityIntelligenceRequirementsPir;
-UnderGateMultiSection.Rules = Rules;
-UnderGateMultiSection.Approvals = Approvals;
+UnderGateMultiSectionQa.Accounts = Accounts;
+UnderGateMultiSectionQa.Images = Images;
+UnderGateMultiSectionQa.CustomPagesForAnAccount = CustomPagesForAnAccount;
+UnderGateMultiSectionQa.CustomAssetsForAnAccount = CustomAssetsForAnAccount;
+UnderGateMultiSectionQa.TsengAbuseComplaintProcessorOther = TsengAbuseComplaintProcessorOther;
+UnderGateMultiSectionQa.McpPortalAnalytics = McpPortalAnalytics;
+UnderGateMultiSectionQa.McpPortal = McpPortal;
+UnderGateMultiSectionQa.McpPortalServers = McpPortalServers;
+UnderGateMultiSectionQa.AccessApplications = AccessApplications;
+UnderGateMultiSectionQa.AccessShortLivedCertificateCas = AccessShortLivedCertificateCas;
+UnderGateMultiSectionQa.AccessApplicationScopedPolicies = AccessApplicationScopedPolicies;
+UnderGateMultiSectionQa.AccessAuthenticatorDeviceAaguids = AccessAuthenticatorDeviceAaguids;
+UnderGateMultiSectionQa.AccessBookmarkApplicationsDeprecated = AccessBookmarkApplicationsDeprecated;
+UnderGateMultiSectionQa.AccessMTLSAuthentication = AccessMTLSAuthentication;
+UnderGateMultiSectionQa.AccessCustomPages = AccessCustomPages;
+UnderGateMultiSectionQa.GatewayCa = GatewayCa;
+UnderGateMultiSectionQa.AccessGroups = AccessGroups;
+UnderGateMultiSectionQa.AccessIdentityProviders = AccessIdentityProviders;
+UnderGateMultiSectionQa.AccessIdPFederationGrants = AccessIdPFederationGrants;
+UnderGateMultiSectionQa.AccessKeyConfiguration = AccessKeyConfiguration;
+UnderGateMultiSectionQa.AccessAuthenticationLogs = AccessAuthenticationLogs;
+UnderGateMultiSectionQa.AccessJitRequestLogs = AccessJitRequestLogs;
+UnderGateMultiSectionQa.AccessScimUpdateLogs = AccessScimUpdateLogs;
+UnderGateMultiSectionQa.ZeroTrustOrganization = ZeroTrustOrganization;
+UnderGateMultiSectionQa.AccessReusablePolicies = AccessReusablePolicies;
+UnderGateMultiSectionQa.AccessPolicyTester = AccessPolicyTester;
+UnderGateMultiSectionQa.AccessSamlEncryptionCertificates = AccessSamlEncryptionCertificates;
+UnderGateMultiSectionQa.ZeroTrustSeats = ZeroTrustSeats;
+UnderGateMultiSectionQa.AccessServiceTokens = AccessServiceTokens;
+UnderGateMultiSectionQa.AccessTags = AccessTags;
+UnderGateMultiSectionQa.ZeroTrustUsers = ZeroTrustUsers;
+UnderGateMultiSectionQa.IPAddressManagementAddressMaps = IPAddressManagementAddressMaps;
+UnderGateMultiSectionQa.IPAddressManagementLeases = IPAddressManagementLeases;
+UnderGateMultiSectionQa.IPAddressManagementPrefixes = IPAddressManagementPrefixes;
+UnderGateMultiSectionQa.IPAddressManagementBGPPrefixes = IPAddressManagementBGPPrefixes;
+UnderGateMultiSectionQa.IPAddressManagementDynamicAdvertisement = IPAddressManagementDynamicAdvertisement;
+UnderGateMultiSectionQa.IPAddressManagementServiceBindings = IPAddressManagementServiceBindings;
+UnderGateMultiSectionQa.IPAddressManagementPrefixDelegation = IPAddressManagementPrefixDelegation;
+UnderGateMultiSectionQa.DlsRegionalServices = DlsRegionalServices;
+UnderGateMultiSectionQa.Namespaces = Namespaces;
+UnderGateMultiSectionQa.Memory = Memory;
+UnderGateMultiSectionQa.AIGateway = AIGateway;
+UnderGateMultiSectionQa.AIGatewayAccountProviders = AIGatewayAccountProviders;
+UnderGateMultiSectionQa.AIGatewayAccountProviderCosts = AIGatewayAccountProviderCosts;
+UnderGateMultiSectionQa.AIGatewayEvaluations = AIGatewayEvaluations;
+UnderGateMultiSectionQa.AIGatewayGateways = AIGatewayGateways;
+UnderGateMultiSectionQa.AIGatewayCustomDomains = AIGatewayCustomDomains;
+UnderGateMultiSectionQa.AIGatewayDatasets = AIGatewayDatasets;
+UnderGateMultiSectionQa.AIGatewayLogs = AIGatewayLogs;
+UnderGateMultiSectionQa.AIGatewayProviderConfigs = AIGatewayProviderConfigs;
+UnderGateMultiSectionQa.AIGatewayDynamicRoutes = AIGatewayDynamicRoutes;
+UnderGateMultiSectionQa.Account = Account;
+UnderGateMultiSectionQa.AISearchInstances = AISearchInstances;
+UnderGateMultiSectionQa.AISearchInstancesJobs = AISearchInstancesJobs;
+UnderGateMultiSectionQa.AISearchNamespaces = AISearchNamespaces;
+UnderGateMultiSectionQa.AISearchAccountSearch = AISearchAccountSearch;
+UnderGateMultiSectionQa.AISearchInstancesItems = AISearchInstancesItems;
+UnderGateMultiSectionQa.AISearchTokens = AISearchTokens;
+UnderGateMultiSectionQa.WorkersAI = WorkersAI;
+UnderGateMultiSectionQa.WorkersAIFinetune = WorkersAIFinetune;
+UnderGateMultiSectionQa.FinetuneAsset = FinetuneAsset;
+UnderGateMultiSectionQa.NotificationAlertTypes = NotificationAlertTypes;
+UnderGateMultiSectionQa.NotificationMechanismEligibility = NotificationMechanismEligibility;
+UnderGateMultiSectionQa.NotificationDestinationsWithPagerDuty = NotificationDestinationsWithPagerDuty;
+UnderGateMultiSectionQa.NotificationWebhooks = NotificationWebhooks;
+UnderGateMultiSectionQa.NotificationHistory = NotificationHistory;
+UnderGateMultiSectionQa.NotificationPolicies = NotificationPolicies;
+UnderGateMultiSectionQa.NotificationSilences = NotificationSilences;
+UnderGateMultiSectionQa.DataSecurity = DataSecurity;
+UnderGateMultiSectionQa.ArtAnalytics = ArtAnalytics;
+UnderGateMultiSectionQa.AnalyticsEngine = AnalyticsEngine;
+UnderGateMultiSectionQa.Artifacts = Artifacts;
+UnderGateMultiSectionQa.AuditLogs = AuditLogs;
+UnderGateMultiSectionQa.AutoRagRagSearch = AutoRagRagSearch;
+UnderGateMultiSectionQa.AutoRagRag = AutoRagRag;
+UnderGateMultiSectionQa.AutoRagJobs = AutoRagJobs;
+UnderGateMultiSectionQa.BillableUsage = BillableUsage;
+UnderGateMultiSectionQa.BillableUsageV2 = BillableUsageV2;
+UnderGateMultiSectionQa.AccountBilling = AccountBilling;
+UnderGateMultiSectionQa.AccountBillingHistory = AccountBillingHistory;
+UnderGateMultiSectionQa.AccountBillingProfile = AccountBillingProfile;
+UnderGateMultiSectionQa.UsageAnalytics = UsageAnalytics;
+UnderGateMultiSectionQa.BotnetThreatFeed = BotnetThreatFeed;
+UnderGateMultiSectionQa.BrandProtection = BrandProtection;
+UnderGateMultiSectionQa.LogoMatch = LogoMatch;
+UnderGateMultiSectionQa.DomainSearch = DomainSearch;
+UnderGateMultiSectionQa.BrowserExtensionConfig = BrowserExtensionConfig;
+UnderGateMultiSectionQa.BrowserExtensionInventories = BrowserExtensionInventories;
+UnderGateMultiSectionQa.Brapi = Brapi;
+UnderGateMultiSectionQa.Builds = Builds;
+UnderGateMultiSectionQa.RepositoryConnections = RepositoryConnections;
+UnderGateMultiSectionQa.GitHubIntegration = GitHubIntegration;
+UnderGateMultiSectionQa.BuildTokens = BuildTokens;
+UnderGateMultiSectionQa.Triggers = Triggers;
+UnderGateMultiSectionQa.EnvironmentVariables = EnvironmentVariables;
+UnderGateMultiSectionQa.Workers = Workers;
+UnderGateMultiSectionQa.DeployHooks = DeployHooks;
+UnderGateMultiSectionQa.AccountSubscriptions = AccountSubscriptions;
+UnderGateMultiSectionQa.CallsApps = CallsApps;
+UnderGateMultiSectionQa.CallsTurnKeys = CallsTurnKeys;
+UnderGateMultiSectionQa.CloudflareTunnel = CloudflareTunnel;
+UnderGateMultiSectionQa.CloudflareTunnelConfiguration = CloudflareTunnelConfiguration;
+UnderGateMultiSectionQa.Turnstile = Turnstile;
+UnderGateMultiSectionQa.Scans = Scans;
+UnderGateMultiSectionQa.BinDB = BinDB;
+UnderGateMultiSectionQa.Event = Event;
+UnderGateMultiSectionQa.Attacker = Attacker;
+UnderGateMultiSectionQa.Category = Category;
+UnderGateMultiSectionQa.Country = Country;
+UnderGateMultiSectionQa.Dataset = Dataset;
+UnderGateMultiSectionQa.Groups = Groups;
+UnderGateMultiSectionQa.Indicators = Indicators;
+UnderGateMultiSectionQa.Indicator = Indicator;
+UnderGateMultiSectionQa.Permissions = Permissions;
+UnderGateMultiSectionQa.Tag = Tag;
+UnderGateMultiSectionQa.TargetIndustry = TargetIndustry;
+UnderGateMultiSectionQa.Datasets = Datasets;
+UnderGateMultiSectionQa.Events = Events;
+UnderGateMultiSectionQa.IndicatorTypes = IndicatorTypes;
+UnderGateMultiSectionQa.TagCategory = TagCategory;
+UnderGateMultiSectionQa.RequestForInformationRfi = RequestForInformationRfi;
+UnderGateMultiSectionQa.PriorityIntelligenceRequirementsPir = PriorityIntelligenceRequirementsPir;
+UnderGateMultiSectionQa.Rules = Rules;
+UnderGateMultiSectionQa.Approvals = Approvals;
 
-export declare namespace UnderGateMultiSection {
+export declare namespace UnderGateMultiSectionQa {
   export type RequestOptions = Opts.RequestOptions;
   export {
     Accounts as Accounts,
